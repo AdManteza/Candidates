@@ -1,6 +1,8 @@
 # In this file we define the methods to help filter out candidates
 # This way, we keep these methods separated from other potential parts of the program
 MINIMUM_REQUIRED_EXPERIENCE = 2
+DAYS_AGO = 15
+GITHUB_POINTS = 100
 
 def print_all
   @candidates.each do |i|
@@ -25,7 +27,7 @@ end
 # More methods will go below
 
 def enough_github_points?(candidate) # Have 100 or more Github points
-  true if candidate[:github_points] >= 100
+  true if candidate[:github_points] >= GITHUB_POINTS
 end
 
 def knows_RubyOrPython?(candidate) # Know at least Ruby or Python
@@ -33,7 +35,7 @@ def knows_RubyOrPython?(candidate) # Know at least Ruby or Python
 end
 
 def applied_lately?(candidate) # Applied in the last 15 days
-  true if candidate[:date_applied] >= 15.days.ago.to_date
+  true if candidate[:date_applied] >= DAYS_AGO.days.ago.to_date
 end
 
 def legal_age?(candidate) # Are over the age of 17 (18+)
