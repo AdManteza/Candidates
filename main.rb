@@ -14,7 +14,7 @@ def display_menu
   puts "Select from 1 to 4"
   puts '1 - Find the candidate id'
   puts '2 - Display all candidates'
-  puts '3 - Display all qualified candidates - ordered by experience and points'
+  puts '3 - Display all final list of candidates - ordered by experience and points'
   puts '4 - Display initial list of qualified candidates'
   puts 'Or just type "Exit" to get outta here!'
 end
@@ -32,7 +32,7 @@ def repl
     when '2'
       print_all
     when '3'
-      pp display_qualified
+      pp final_list_of_candidates
     when '4'
       pp qualified_candidates
     else

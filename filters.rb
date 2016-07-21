@@ -58,29 +58,10 @@ def qualified_candidates
   output
 end
 
-def ordered_by_qualifications
-  @candidates.sort_by { |hsh| hsh[:years_of_experience] }.reverse!
+def final_list_of_candidates
+  @candidates.sort_by { |hash| [hash[:years_of_experience], hash[:github_points]] }.reverse!
 end
 
-
-def sort_if_equal_experience
-  arr = ordered_by_qualifications
-  n = arr.length
-
-  (n-1).times do |i|
-    if arr[i][:years_of_experience] == arr[i + 1][:years_of_experience]
-      if arr[i][:github_points] < arr[1 + i][:github_points]
-        arr[i], arr[i + 1] = arr[i + 1], arr[i]
-      end
-    end
-  end
-  
-  arr
-end
-
-def display_qualified
-  p sort_if_equal_experience
-end
 
 
 
