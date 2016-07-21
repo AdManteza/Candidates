@@ -42,19 +42,18 @@ def legal_age?(candidate) # Are over the age of 17 (18+)
   true if candidate[:age] > 17
 end
 
+def match_requirements?(index)
+  experienced?(@candidates[index]) && 
+  enough_github_points?(@candidates[index]) &&
+  knows_RubyOrPython?(@candidates[index]) &&
+  applied_lately?(@candidates[index]) &&
+  legal_age?(@candidates[index])
+end
+
 def qualified_candidates
   output = []
   @candidates.each_with_index do |candidate, index|
-    if  [  
-        experienced?(@candidates[index]),
-        enough_github_points?(@candidates[index]),
-        knows_RubyOrPython?(@candidates[index]),
-        applied_lately?(@candidates[index]),
-        legal_age?(@candidates[index])
-        ].all?
-
-      output.push(candidate) 
-    end
+    output.push(candidate) if match_requirements?(index)
   end
   output
 end
